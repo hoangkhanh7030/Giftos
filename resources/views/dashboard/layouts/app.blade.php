@@ -7,6 +7,9 @@
     <title>Giftos</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+    @hasSection('css')
+            @yield('css')
+    @endif
 </head>
 
 <body>

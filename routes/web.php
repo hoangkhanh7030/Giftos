@@ -62,5 +62,5 @@ Route::get('/logout', [
     'logout',
 ])->name('auth.logout');
 
-Route::resource('/products', ProductController::class);
+Route::resource('/products', ProductController::class)->middleware(AuthMiddleware::class);
 
