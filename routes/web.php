@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AuthController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Frontend\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
@@ -60,4 +61,6 @@ Route::get('/logout', [
     AuthController::class,
     'logout',
 ])->name('auth.logout');
+
+Route::resource('/products', ProductController::class);
 
