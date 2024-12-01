@@ -1,6 +1,9 @@
 @extends('landing.layouts.app')
 @section('slider')
     @include('landing.component.slider')
+@endsection
+@section('products')
+    @set($products, $products)
 @endsection  
 @section('content')
     <!-- shop section -->

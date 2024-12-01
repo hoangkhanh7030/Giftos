@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('product_name');
-            $table->integer('price');
-            $table->string('image');
-            $table->text('description');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('products')) {
+            Schema::create('products', function (Blueprint $table) {
+                $table->id();
+                $table->string('product_name');
+                $table->integer('price');
+                $table->string('image');
+                $table->text('description')->nullable();
+                $table->unsignedBigInteger('category_id');
+                $table->unsignedBigInteger('status_id');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

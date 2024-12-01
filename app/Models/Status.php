@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Product extends Model
+class Status extends Model
 {
     use HasFactory, Notifiable;
 
@@ -16,20 +16,11 @@ class Product extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'product_name',
-        'price',
-        'image',
-        'description',
+        'name',
     ];
 
-    // Khai báo mối quan hệ với bảng categories
-    public function category()
+    public function products()
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(Status::class);
+        return $this->hasMany(Product::class);
     }
 }

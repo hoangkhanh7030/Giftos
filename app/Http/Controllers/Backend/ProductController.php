@@ -6,15 +6,23 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Services\Interfaces\ProductServiceInterface;
 
 class ProductController extends Controller
 {
+    protected $productService;
+
+    public function __construct(ProductServiceInterface $productService) {
+        $this->productService = $productService;
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.products');
+        $products = $this->productService->getAllProduct();
+        return view('dashboard.products', compact('products'));
     }
 
     /**

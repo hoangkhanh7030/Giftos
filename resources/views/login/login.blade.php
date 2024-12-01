@@ -18,12 +18,16 @@
             <div class="card login-card">
                 <div class="row no-gutters">
                     <div class="col-md-5">
+
                         <img src="images/login.jpg" alt="login" class="login-card-img">
+
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
                             <div class="brand-wrapper">
-                                <img src="images/logo.svg" alt="logo" class="logo">
+                                <a href="{{ route('landing.home') }}">
+                                    <img src="images/logo.svg" alt="logo" class="logo">
+                                </a>
                             </div>
                             <p class="login-card-description">Sign into your account</p>
                             <form action="{{ route('auth.login') }}" method="POST">

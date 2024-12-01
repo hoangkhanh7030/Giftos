@@ -36,10 +36,13 @@
                                     <th>Name Product</th>
                                     <th>Description</th>
                                     <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($products as $product)
                                 <tr class="alert" role="alert">
                                     <td>
                                         <label class="checkbox-wrap checkbox-primary">
@@ -48,23 +51,26 @@
                                         </label>
                                     </td>
                                     <td>
-                                        <div class="img" style="background-image: url(images/product-1.png);"></div>
+                                        <img src="{{ $product->image }}" alt="" width="50px" height="50px">
                                     </td>
                                     <td>
-                                        <div class="email">
-                                            <span>Sneakers Shoes 2020 For Men </span>
-                                            <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
+                                        <div class="name">
+                                            <span>{{ $product->product_name }}</span>
                                         </div>
                                     </td>
-                                    <td>$44.99</td>
-                                    <td>$44.99</td>
+                                    <td style="width: 250px;">{{ $product->description }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>{{ $product->status->name }}</td>
                                     <td class="text-center">
                                         <a href="" class="btn btn-primary">Edit</a>
                                         <a href="" class="btn btn-primary">Delete</a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                        {{ $products->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
