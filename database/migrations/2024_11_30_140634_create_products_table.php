@@ -18,8 +18,8 @@ return new class extends Migration
                 $table->integer('price');
                 $table->string('image');
                 $table->text('description')->nullable();
-                $table->unsignedBigInteger('category_id');
-                $table->unsignedBigInteger('status_id');
+                $table->bigInteger('category_id')->unsigned();
+                $table->bigInteger('status_id')->unsigned();
                 $table->timestamps();
             });
         }

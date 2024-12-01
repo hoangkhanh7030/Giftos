@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
+use App\Models\Status;
 use App\Services\Interfaces\ProductServiceInterface;
 
 class ProductController extends Controller
@@ -30,7 +32,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $statuses = Status::all();
+    
+        return view('dashboard.products.create', compact('categories', 'statuses'));
     }
 
     /**
@@ -38,7 +43,24 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        
+        if ($request->hasFile('image')) {
+            // Store the image in the public disk, in the 'products' folder
+            $imagePath = $request->file('image')->store('images', 'public'); // 'public' refers to the 'public' disk
+            $product = Product::create([
+                'product_name' => $request->product_name,
+                'price' => $request->price,
+                'description' => $request->description,
+                'category_id' => 1,
+                'status_id' => 1,
+                'image' => $imagePath,
+            ]);
+        }
+        
+
+
+        return redirect()->route('products.index')->with('success', 'Product created successfully!');
+
     }
 
     /**

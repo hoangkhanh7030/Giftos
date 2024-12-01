@@ -8,24 +8,9 @@
 
 @section('content')
     <section class="ftco-section">
-        <div class="row wrapper border-bottom white-bg">
-            <div class="col-lg-10">
-                <h2 class="pl-3">Products Management</h2>
-                <ol class="breadcrumb">
-                    <li class="pr-1">
-                        <a href="{{ route('dashboard') }}">Dashboard</a>
-                    </li>
-                    <li>
-                        |
-                    </li>
-                    <li class="active pl-1">
-                        <strong>Products</strong>
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
+        <div class="container mt-4">
+            <div class="filter d-flex justify-content-end"><a href="{{ route('products.create') }}" class="btn btn-primary">Add New Product</a></div>
+            <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="table-wrap">
                         <table class="table">

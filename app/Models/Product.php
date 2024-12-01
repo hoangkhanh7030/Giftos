@@ -20,6 +20,8 @@ class Product extends Model
         'price',
         'image',
         'description',
+        'category_id',
+        'status_id',
     ];
 
     // Khai báo mối quan hệ với bảng categories
